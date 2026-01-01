@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CulturePiece Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CSS STYLES (Design) --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505; /* Bilkul dark background */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links span {
+            margin: 0 15px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .nav-links span.active {
+            color: white;
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+
+        .header-buttons button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .btn-purple {
+            background-color: #a855f7 !important; /* Purple button */
+        }
+
+        /* Main Content Area */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        /* Input Area */
+        .input-area {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 10px 20px;
+            border-radius: 30px;
+            width: 400px;
+            color: white;
+            outline: none;
+        }
+
+        .generate-btn {
+            background: #ccc;
+            color: black;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .gender-toggle {
+            margin-bottom: 40px;
+        }
+        
+        .gender-toggle span {
+            background: #111;
+            padding: 5px 20px;
+            border: 1px solid #333;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .gender-toggle span.active {
+            background: white;
+            color: black;
+        }
+
+        /* Grid System (Categories) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #555;
+            background: #111;
+        }
+
+        .card i {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .card span {
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CULTUREPIECE</div>
+        <div class="nav-links">
+            <span class="active">Designer</span>
+            <span>Ghost</span>
+            <span>Banner</span>
+            <span>Photoshoot</span>
+        </div>
+        <div class="header-buttons">
+            <button>UPLOAD BRAND LOGO</button>
+            <button class="btn-purple"><i class="fas fa-cog"></i> SETTINGS</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Collection Studio</h1>
+
+        <div class="input-area">
+            <input type="text" class="input-box" placeholder="Describe your idea (or upload image)">
+            <button class="generate-btn" onclick="startGeneration()">GENERATE</button>
+        </div>
+
+        <div class="gender-toggle">
+            <span class="active">MALE</span>
+            <span>FEMALE</span>
+        </div>
+
+        <div class="grid-container">
+            <div class="card"><i class="fas fa-bars"></i><span>Trousers</span></div>
+            <div class="card"><i class="fas fa-bacon"></i><span>Shorts</span></div> <div class="card"><i class="fas fa-running"></i><span>Tracksuits</span></div>
+
+            <div class="card"><i class="fas fa-tshirt"></i><span>T-Shirts</span></div>
+            <div class="card"><i class="fas fa-user-astronaut"></i><span>Denim Jackets</span></div>
+            <div class="card"><i class="fas fa-cloud"></i><span>Puffer Jackets</span></div>
+
+            <div class="card"><i class="fas fa-vest"></i><span>Hunting Jackets</span></div>
+            <div class="card"><i class="fas fa-crop-alt"></i><span>Crop Tops</span></div>
+            <div class="card"><i class="fas fa-socks"></i><span>Leggings</span></div>
+
+            <div class="card"><i class="fas fa-user-secret"></i><span>Hoodies</span></div>
+            <div class="card"><i class="fas fa-futbol"></i><span>Soccer Uniforms</span></div>
+            <div class="card"><i class="fas fa-football-ball"></i><span>American Football</span></div>
+        </div>
+    </div>
+
+    <script>
+        function startGeneration() {
+            alert("API abhi connect nahi hai! Yeh sirf design demo hai.");
+            // Yahan baad mein hum Gemini/Replicate API ka code lagayenge
+        }
+
+        // Simple Toggle logic for Male/Female buttons
+        const toggles = document.querySelectorAll('.gender-toggle span');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                document.querySelector('.gender-toggle span.active').classList.remove('active');
+                toggle.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
